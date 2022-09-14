@@ -1,14 +1,18 @@
 var numbers = [];
 
-var c = document.getElementById("myCanvas");
-var context = c.getContext("2d");
+var canvas = document.getElementById("mainCanvas");
+var context = canvas.getContext("2d");
+
+canvas.setAttribute('width', window.innerWidth - 10);
+canvas.setAttribute('height', window.innerHeight - 50);
+
 
 
 document.getElementById("btnGenerate").onclick = generateRandom;
 document.getElementById("btnSort").onclick = bubbleSort;
 
-var height = c.height;
-var width = c.width;
+var height = canvas.height;
+var width = canvas.width;
 
 var collumnAmount = 50;
 var collumnGap = 2;
@@ -55,6 +59,8 @@ function swap(arr, a, b) {
     arr[b] = temp;
 }
 
+
+
 async function bubbleSort() {
     if(numbers.length < 1) {
         return;
@@ -64,10 +70,12 @@ async function bubbleSort() {
         for (let j = 0; j < collumnAmount-i-1; j++) {
                     if (numbers[j] > numbers[j+1]) {  
                     swap(numbers,j,j+1);  
+                    drawCollumns();
+                    await waitMs(100 / sortingSpeed);
             } 
             
-            await waitMs(100 / sortingSpeed);
-            drawCollumns();
+            
+            
         }
     }
 }
