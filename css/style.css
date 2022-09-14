@@ -1,0 +1,10 @@
+/*apply for all*/
+* {
+	box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: DarkSlateBlue;
+  font-family: 'Silkscreen', cursive;
+}
